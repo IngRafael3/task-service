@@ -54,4 +54,9 @@ public class TaskServiceImpl implements TaskService {
                 .flatMap(taskRepository::delete);
     }
 
+    @Override
+    public Flux<TaskDTO> findByUserEmail(String email){
+        return taskRepository.findByUserEmail(email);
+    }
+
 }

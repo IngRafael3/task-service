@@ -2,6 +2,7 @@ package com.example.taskservice.models;
 
 import lombok.Data;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.relational.core.mapping.Column;
 import org.springframework.data.relational.core.mapping.Table;
 
 @Table("tasks")
@@ -15,6 +16,7 @@ public class TaskEntity {
 
     private String status;
 
+    @Column(value = "user_email")
     private String userEmail; // Field for the user ID
 
     public TaskEntity(String title, String description, String status, String userEmail) {

@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
+import java.time.Duration;
+
 @RestController
 @RequestMapping("/api/tasks")
 public class TaskController {
@@ -42,6 +44,11 @@ public class TaskController {
     public Mono<Void> deleteTask(@PathVariable Long id) {
         return taskService.deleteTask(id)
                 .switchIfEmpty(Mono.error(new NotFounTask("Task no found with id: "+id)));
+    }
+
+    @GetMapping("/user/{email}")
+    public Flux<TaskDTO> getByUser(@PathVariable String email){
+        return taskService.findByUserEmail(email).delayElements(Duration.ofSeconds(1));
     }
 }
 
