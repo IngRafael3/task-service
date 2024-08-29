@@ -15,13 +15,13 @@ public class TaskEntity {
 
     private String status;
 
-    private Long userId; // Field for the user ID
+    private String userEmail; // Field for the user ID
 
-    public TaskEntity(String title, String description, String status, Long userId) {
+    public TaskEntity(String title, String description, String status, String userEmail) {
         this.title = title;
         this.description = description;
         this.status = status;
-        this.userId = userId;
+        this.userEmail = userEmail;
     }
 
     public TaskEntity() {
@@ -59,11 +59,11 @@ public class TaskEntity {
         this.status = status;
     }
 
-    public Long getUserId() {
-        return userId;
+    public String getUserEmail() {
+        return userEmail;
     }
 
-    public void setUserId(Long userId) {
-        this.userId = userId;
+    public void setUserEmail(String userEmail) {
+        this.userEmail = userEmail;
     }
 }

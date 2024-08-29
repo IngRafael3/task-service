@@ -5,14 +5,14 @@ public class TaskDTO {
     private String title;
     private String description;
     private String status;
-    private Long userId; // User ID field
+    private String userEmail; // User ID field
 
 
-    public TaskDTO(String title, String description, String status, Long userId) {
+    public TaskDTO(String title, String description, String status, String userEmail) {
         this.title = title;
         this.description = description;
         this.status = status;
-        this.userId = userId;
+        this.userEmail = userEmail;
     }
 
     public TaskDTO() {
@@ -50,11 +50,11 @@ public class TaskDTO {
         this.status = status;
     }
 
-    public Long getUserId() {
-        return userId;
+    public String getUserEmail() {
+        return userEmail;
     }
 
-    public void setUserId(Long userId) {
-        this.userId = userId;
+    public void setUserEmail(String userEmail) {
+        this.userEmail = userEmail;
     }
 }

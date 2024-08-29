@@ -42,7 +42,7 @@ public class TaskServiceImpl implements TaskService {
                     existingTask.setTitle(taskDTO.getTitle());
                     existingTask.setDescription(taskDTO.getDescription());
                     existingTask.setStatus(taskDTO.getStatus());
-                    existingTask.setUserId(taskDTO.getUserId()); // Update userId
+                    existingTask.setUserEmail(taskDTO.getUserEmail()); // Update userId
                     return taskRepository.save(existingTask);
                 })
                 .map(TaskMapper::toTaskDTO);

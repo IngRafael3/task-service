@@ -11,7 +11,7 @@ public class TaskMapper {
         dto.setTitle(taskEntity.getTitle());
         dto.setDescription(taskEntity.getDescription());
         dto.setStatus(taskEntity.getStatus());
-        dto.setUserId(taskEntity.getUserId());
+        dto.setUserEmail(taskEntity.getUserEmail());
         return dto;
     }
 
@@ -21,7 +21,7 @@ public class TaskMapper {
         taskEntity.setTitle(taskDTO.getTitle());
         taskEntity.setDescription(taskDTO.getDescription());
         taskEntity.setStatus(taskDTO.getStatus());
-        taskEntity.setUserId(taskDTO.getUserId());
+        taskEntity.setUserEmail(taskDTO.getUserEmail());
         return taskEntity;
     }
 }

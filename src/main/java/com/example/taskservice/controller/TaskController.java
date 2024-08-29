@@ -1,6 +1,7 @@
 package com.example.taskservice.controller;
 
 import com.example.taskservice.dto.TaskDTO;
+import com.example.taskservice.handlers.NotFounTask;
 import com.example.taskservice.models.TaskEntity;
 import com.example.taskservice.service.TaskService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +19,7 @@ public class TaskController {
     @GetMapping("/{id}")
     public Mono<TaskDTO> getTaskById(@PathVariable Long id) {
         return taskService.getTaskById(id)
-                .switchIfEmpty(Mono.error(new TaskNotFoundException(id)));
+                .switchIfEmpty(Mono.error(new NotFounTask("Task no found with id: "+id)));
     }
 
     @GetMapping
@@ -34,18 +35,13 @@ public class TaskController {
     @PutMapping("/{id}")
     public Mono<TaskDTO> updateTask(@PathVariable Long id, @RequestBody TaskDTO taskDTO) {
         return taskService.updateTask(id, taskDTO)
-                .switchIfEmpty(Mono.error(new TaskNotFoundException(id)));
+                .switchIfEmpty(Mono.error(new NotFounTask("Task no found with id: "+id)));
     }
 
     @DeleteMapping("/{id}")
     public Mono<Void> deleteTask(@PathVariable Long id) {
         return taskService.deleteTask(id)
-                .switchIfEmpty(Mono.error(new TaskNotFoundException(id)));
+                .switchIfEmpty(Mono.error(new NotFounTask("Task no found with id: "+id)));
     }
 }
 
-class TaskNotFoundException extends RuntimeException {
-    public TaskNotFoundException(Long id) {
-        super("Task with ID " + id + " not found");
-    }
-}
