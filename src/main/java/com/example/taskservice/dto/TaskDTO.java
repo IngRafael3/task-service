@@ -1,5 +1,7 @@
 package com.example.taskservice.dto;
 
+import java.util.Objects;
+
 public class TaskDTO {
     private Long id;
     private String title;
@@ -16,6 +18,22 @@ public class TaskDTO {
     }
 
     public TaskDTO() {
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        TaskDTO taskDTO = (TaskDTO) o;
+        return Objects.equals(title, taskDTO.title) &&
+                Objects.equals(description, taskDTO.description) &&
+                Objects.equals(status, taskDTO.status) &&
+                Objects.equals(userEmail, taskDTO.userEmail);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(title, description, status, userEmail);
     }
 
     public Long getId() {

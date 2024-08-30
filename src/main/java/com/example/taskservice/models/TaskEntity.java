@@ -26,7 +26,7 @@ public class TaskEntity {
         this.userEmail = userEmail;
     }
 
-    public TaskEntity() {
+     public TaskEntity() {
     }
 
     public Long getId() {
